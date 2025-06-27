@@ -1,0 +1,167 @@
+{
+  "bd": {
+    "bd_type": "postgresql",
+    "user": "postgres",
+    "pastword": "admin",
+    "host": "localhost",
+    "port": "5433",
+    "name": "postgres"
+  },
+  "table": {
+    "product_type":["product_type",
+      {"id": {"type": "Integer"},
+      "name": {"type": "String", "count": 100}
+      }],
+    "product_gender":[ "product_gender",{
+      "id":
+        {
+          "type": "Integer",
+          "primary_key": "True"
+        }
+      ,
+      "name":
+        {
+          "type": "String",
+          "count": 100
+        }
+
+    }],
+    "product_size": ["product_size",{
+      "id":
+        {
+          "type": "Integer",
+          "primary_key": "True"
+        }
+      ,
+      "name":
+        {
+          "type": "String",
+          "count": 100
+        }
+
+    }],
+    "product":["product", {
+      "id":
+        {
+          "type": "Integer",
+          "primary_key": "True"
+        }
+      ,
+      "name":
+        {
+          "type": "String",
+          "count": 100
+        }
+      ,
+      "type":
+        {
+          "type": "Integer",
+          "ForeignKey": "product_type.id"
+        }
+      ,
+      "gender":
+        {
+          "type": "Integer",
+          "ForeignKey": "product_gender.id"
+        }
+      ,
+      "size":
+        {
+          "type": "Integer",
+          "ForeignKey": "product_size.id"
+        }
+      ,
+      "price":
+        {
+          "type": "Float"
+        }
+
+    }],
+    "customer":["customer",
+    {
+      "id":
+        {
+          "type": "Integer",
+          "primary_key": "True"
+        }
+      ,
+      "name":
+        {
+          "type": "String",
+          "count": 100
+        }
+      ,
+      "surname":
+        {
+          "type": "String",
+          "count": 100
+        }
+      ,
+      "mail":
+        {
+          "type": "String",
+          "count": 100
+        }
+      ,
+      "phone":
+        {
+          "type": "Integer"
+        }
+      ,
+      "adres":
+        {
+          "type": "String",
+          "count": 200
+        }
+
+    }],
+    "purchase":["purchase", {
+      "id":
+        {
+          "type": "Integer",
+          "primary_key": "True"
+        }
+      ,
+      "date_order":
+        {
+          "type": "DateTime"
+        }
+      ,
+      "id_customer":
+        {
+          "type": "Integer",
+          "ForeignKey": "customer.id"
+        }
+      ,
+      "discount":
+        {
+          "type": "Float"
+        }
+
+    }],
+    "purchase_list":["purchase_list", {
+      "id":
+        {
+          "type": "Integer",
+          "primary_key": "True"
+        }
+      ,
+      "id_purchase":
+        {
+          "type": "Integer",
+          "ForeignKey": "purchase.id"
+        }
+      ,
+      "id_product":
+        {
+          "type": "Integer",
+          "ForeignKey": "product.id"
+        }
+      ,
+      "count_product":
+        {
+          "type": "Integer"
+        }
+    }]
+  }
+}
